@@ -1,0 +1,288 @@
+body{
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+   margin-bottom: 0%;
+   margin-left: 0%;
+   margin-right: 0%;
+
+   font-family: 'fuente', Montserrat;
+}
+.titulo{
+ 
+        font-size: 35px;
+        color: white;
+        text-shadow:
+          -1px -1px 0 #000,
+           1px -1px 0 #000,
+          -1px  1px 0 #000,
+           1px  1px 0 #000;
+      
+    font-family: 'titulo', Lobster;
+
+}
+@media (max-width: 576px){
+    .navbar {
+        overflow: hidden;
+        background-color: #333;
+        position: fixed;
+        top: 0px;
+        width: 100%;
+      }
+      #margin{
+        margin-top: 0%;
+      }
+      .navbar a {
+        
+        display: inline-block;
+        color: #f2f2f2;
+        text-align: center;
+        margin-top: 0%;
+        margin-right: 0%;
+        padding: 5px 12px;
+        text-decoration: none;
+        font-size: 17px;
+      }
+      
+      .navbar a:hover {
+        background: #ddd;
+        color: black;
+      }
+}
+
+.fotos{
+
+    display: inline-block ;
+
+}
+#border{
+    border:  1px solid black;
+   margin: 20px;
+   justify-content: center;  
+ 
+  
+
+}
+#border2{
+    border:  1px solid black;
+   margin: 20px;
+   
+   height: 250px;
+   width: 250px;
+     
+
+}
+div.gallery {
+    margin: 30px;
+    border: 1px solid #ccc;
+    display: inline-block;
+    width: 180px;
+  }
+  
+  div.gallery:hover {
+    border: 1px solid #777;
+  }
+  
+  div.gallery img {
+    width: 100%;
+    height: auto;
+  }
+  
+  div.desc {
+    padding: 15px;
+    text-align: center;
+  }
+figcaption{
+
+    font-size: small;
+}
+#texto{
+
+    margin-left: 10px ;
+    text-align: left;
+}
+#imgaenn{
+    display:inline-block;
+}
+
+p {
+    margin-left: 50px;
+    margin-right: 50px;
+    text-align:justify;
+    line-height: 1.5; /* Establece un interlineado de 1.5 */
+  }
+  
+  a{
+    text-decoration: none;
+  }
+#inline{
+   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+     background-color: rgb(248, 248, 248);
+      float:right;
+     padding: 10px;
+     margin-right: 300px;
+     margin-left: 300px;
+     padding: 5%;
+
+}
+#flex{
+
+    display: flex;
+    justify-content: center;
+
+}
+#centro{
+    
+    text-align: center;
+}
+#center{
+
+  margin: 20%,20%;
+
+}
+img{
+    margin-right: 10px;
+
+
+}
+#fotos2{
+
+    margin-left: 35px;
+    margin-right: 35px;
+}
+#fotos21{
+    margin-left: 35px;
+    margin-right: 35px;
+    margin-bottom: 70px;
+
+
+}
+#fotos22{
+
+    margin-left: 35px;
+    margin-right: 35px;
+    margin-bottom: 140px;  
+}
+  
+
+header{
+    background-image: url(Diseño\ sin\ título\.jpg);
+    background-size: cover;
+    padding: 100px;
+    margin-top: 30px;
+    color: #ddd;
+    
+}
+h2{
+    visibility:inherit;
+}
+footer {
+    display: flex;
+    flex-wrap: wrap;
+    width: auto;
+    align-items: center;
+    justify-content: center;
+    background-color: #161310;
+    color: white;
+}
+
+#global {
+    width: auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.links {
+    padding: 25px;
+    width: auto;
+    flex-direction: column;
+}
+
+.links p,
+.links h1,
+#social h1 {
+    justify-content: center;
+    padding: 0%;
+    font-size: 15px;
+}
+
+#social {
+    padding: 25px;
+    width: auto;
+    flex-direction: column;
+}
+
+#social div {
+    width: 100px;
+}
+
+#social img {
+    margin: 10px;
+}
+
+.links a,
+#social a {
+    text-decoration: none;
+    color: rgb(161, 161, 161);
+}
+
+#null {
+    color: white;
+    padding-left: 3%;
+    font-size: 15px;
+    width: 97%;
+    font-family: "Light";
+    background-color: black;
+}
+
+#texto1{
+    margin: 50px;
+    text-align:justify
+}
+#ad {
+    position: fixed; /* fija el anuncio en la pantalla */
+    top: 50px; /* distancia desde la parte superior */
+    right: 10px; /* distancia desde la parte derecha */
+    width: 200px; /* ancho del anuncio */
+    height: 400px; /* alto del anuncio */
+    background-color: #f2f2f2; /* color de fondo */
+    border: 1px solid #ccc; /* borde del anuncio */
+    padding: 10px; /* espacio interno del anuncio */
+}
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+  }
+  #margin{
+    margin-top: 0%;
+  }
+  .navbar a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    margin-top: 0%;
+    margin-right: 0%;
+    padding: 5px 12px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .navbar a:hover {
+    background: #ddd;
+    color: black;
+  }
+  @font-face {
+    font-family: "fuente";
+    src: url(Montserrat/Montserrat-Italic-VariableFont_wght.ttf);
+  }
+  @font-face {
+    font-family: "titulo";
+    src: url(Lobster/Lobster-Regular.ttf);
+  }
