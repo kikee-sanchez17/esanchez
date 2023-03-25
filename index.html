@@ -1,22 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./indexcss.css">
     <title>Enric Sánchez</title>
 </head>
 <body>
-    <h1>Enric Sánchez</h1>
-    <a href="/exercicis/KMUSIC/ex1.html">Exercici 1</a>
-    <br>
-    <br>
-    <a href="/exercicis/LinkinParkweb/webLP.html">Exercici 2</a>
-    <br>
-    <br>
-    <a href="/exercicis/Viladoms de Dalt/viladomsdedalt.html">Exercici 3</a>
-    <br>
-    <br>
-    <a href="/24horesinnovacio/recursosforestals.html">Innovacio24</a>
+
+    <header>
+      <br>
+        <p>Enric Sánchez</p>  
+
+
+    </header>
+    
+
+<div class="navbar">
+    <a href="#1">Degrees</a>
+    <a href="#2">Resume</a>
+    <a href="#3">Websites</a>
+    <a href="#4">About me</a>
+    <a href="#5">Contact me</a>
+  </div>
+<!-- Simulate a smartphone / tablet -->
+<div class="mobile-container">
+
+  <!-- Top Navigation Menu -->
+  <div class="topnav">
+    <a href="#home" class="active none" hidden>→</a>
+    <div id="myLinks">
+      <a href="#1">Degrees</a>
+      <a href="#2">Resume</a>
+      <a href="#3">Websites</a>
+      <a href="#4">About me</a>
+      <a href="#5">Contact me</a>
+    </div>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+      <i class="fa fa-bars" ></i>
+    </a>
+  </div>
+  </div>
+  
+<script>
+  function myFunction() {
+    var x = document.getElementById("myLinks");
+    if (x.style.display === "block") {
+      x.style.display = "none";
+    } else {
+      x.style.display = "block";
+    }
+  }
+  </script>
+    <!--Grades-->
+    <p id="1"></p>
+  <section>
+
+    <h1>Degrees</h1>
+    <h3>Technological Bachelor's Degree</h3>
+    <p>I studied for a Technological High School Diploma for 2 years at my former high school. </p>
+    <a href="http://www.creudesaba.cat"><img src="./creudesaba.jpg" alt="" height="10%" width="10%"></a>
+  </section>
+
+  <!--CV-->
+  <p id="2"></p>
+    <section id="resume" >
+        <h1>Resume</h1>
+        <p>If you are more interested about my skills or work experience, check my Resume.</p>
+        <H3>Click the button to download it!</H3>
+        <img src="./resume-icon-png-15.png" alt="" width="5%" height="5%">
+        <BR></BR>
+        <button class="button button5"><a href="Resume.pdf" download>CV</a></button>
+
+
+    </section>
+    
+      <!--Projects-->
+
+    <section>
+
+
+
+
+    </section>
+
+
+
+
+  <!--Exercises-->
+  <p id="3"></p>
+    <h1>Websites</h1>
+    <h3>These are the websites I created during my current degree. </h3>
+    <section id="paginasweb">
+
+      <div class="responsive">
+        <div class="gallery">
+          <a target="_blank" href="https://esanchezmontoya.netlify.app/exercicis/kmusic/ex1">
+            <img src="./kmusic.png" alt="Cinque Terre" width="600" height="400">
+          </a>
+          <div class="desc">KMUSIC</div>
+        </div>
+      </div>
+      
+      
+      <div class="responsive">
+        <div class="gallery">
+          <a target="_blank" href="https://esanchezmontoya.netlify.app/exercicis/linkinparkweb/weblp">
+            <img src="./linkinpark.png" alt="Forest" width="600" height="400">
+          </a>
+          <div class="desc">Linkin Park web</div>
+        </div>
+      </div>
+      
+      <div class="responsive">
+        <div class="gallery">
+          <a target="_blank" href="https://esanchezmontoya.netlify.app/exercicis/viladoms%20de%20dalt/viladomsdedalt">
+            <img src="./viladoms.png" alt="Northern Lights" width="600" height="400">
+          </a>
+          <div class="desc">Viladoms de dalt</div>
+        </div>
+      </div>
+          
+    </section>
+    <p id="4"></p>
+    <h1>About me</h1>
+    <section id="aboutme">
+
+      <p>I am someone who loves to learn about anything related to technology and computing. I am constantly seeking new knowledge and skills to enhance my understanding of this ever-evolving field.</p>
+      <br>
+      <p>The possibilities of what I can achieve in the future excite me, and I am eager to explore them. Failure is not something that scares me because I know that there is always a lesson to be learned, and it is through these experiences that I can grow and develop.</p>
+      <br>
+      <p>I am passionate about using my knowledge to make a positive impact in the world and to help others. Whether it is through developing new software or improving existing systems, I am always looking for ways to use my skills to make a difference.</p>
+      <br>
+      <p>In short, I am a curious and motivated individual who is determined to learn and grow in the field of technology. The opportunities are endless, and I am excited to see where this journey takes me.</p>
+
+
+
+
+    </section>
+
+     <!--Contacto-->
+     <p id="5"></p>
+     <div id="contact">
+
+
+      <div id="contactext">
+        <h3>Contact</h3>
+        <h1>Got any interest at me?</h1>
+        <p>Do you have any doubts about my projects or just want to contact me?</p>
+        <p>Write whatever to let me know what is your problem</p>
+        <br>
+        <br>
+     
+      </div>
+
+
+      <form>
+        <br>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Your name...">
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="example@example.com">
+        
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" placeholder="Your message.."></textarea>
+        
+        <button type="submit" class="sbutton">Send</button>
+      </form>
+      
+    
+        </div>
+      
+      
+
+
+  <!--footer-->
+    <footer>
+      <div id="global">
+
+          <div id="social">
+              <h1>Social</h1>
+              <div>
+                  <a href="https://www.instagram.com">
+                      <img src="./instagram.png" alt="" width="20vw">
+                  </a>
+                  <a href="https://twitter.com">
+                      <img src="./twitter.png" alt="" width="20vw">
+                  </a>
+                  <a href="https://www.facebook.com">
+                      <img src="./facebook.png" alt="" width="20vw">
+                  </a>
+                  <a href="https://www.linkedin.com/in/enric-sánchez-bb470725a/">
+                      <img src="./linkedin.png" alt="" width="20vw">
+                  </a>
+              </div>
+          </div>
+          <section id="inline">
+            <p>Enric &copy;2023</p>
+          </section>
+       
+      </div>
+    
+         
+ 
+  </footer>
 </body>
 </html>
