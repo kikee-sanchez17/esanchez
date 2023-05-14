@@ -1,0 +1,120 @@
+
+
+body{
+
+  background-image: url(background.jpg);
+  background-size: cover;
+}
+
+#texto{
+  justify-content: center;
+  text-align: center;
+}
+section{
+
+justify-content: center;
+display: flex;
+}
+.container{
+
+  justify-content: center;
+  display: flex;
+  margin: 5%;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 40%;
+  
+
+}
+
+
+.container img{
+  margin: 20px;
+  width: 20%;
+}
+
+
+.title {
+  text-align: center;
+  font-family: 'Coda Caption', sans-serif;
+  font-weight: 800;
+  font-size: calc(20vw / var(--word-total) ); /* Overriden below for fluid typography test */
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  transform: perspective(300px) scaleY(1.5) rotateX(-40deg);
+  transform-style: preserve-3d; /* Important for establishing a shared 3D space for all the layers */
+  --layer-depth: 0.32em;
+}
+
+
+/* The front layer are yellow words with a thick black stroke outline */
+.title .word {
+  position: relative;
+  display: inline-block;
+  color: yellow;
+  font-size: calc(((var(--line-index) + 1) * 25%) + 50%); /* We skew font-sizes to avoid emphasize on the top, due to perspective rotation */
+  text-shadow: 0.06em 0 black, 0.06em 0.06em black, 0 0.06em black, -0.06em 0.06em black, -0.06em 0 black, -0.06em -0.06em black, 0 -0.06em black, 0.06em -0.06em black;
+  transform-style: preserve-3d; /* Important as above, we need to make sure the pseudos share the same 3D space */
+}
+
+
+/* The back layers are two pseudos, we pull content through via Splitting.js! */
+.title .word::before,
+.title .word::after {
+  content: attr(data-word);
+  position: absolute;
+  top: auto;
+  left: 0;
+  bottom: 0;
+  display: block;
+  pointer-events: none;
+}
+
+/* Red layer immediately behind the yellow, thinner stroke outline */
+.title .word::before {
+  color: red;
+  text-shadow: 0.02em 0 black, 0.02em 0.02em black, 0 0.02em black, -0.02em 0.02em black, -0.02em 0 black, -0.02em -0.02em black, 0 -0.02em black, 0.02em -0.02em black;
+  transform: translateZ(calc(var(--layer-depth) * -0.5));
+}
+
+/* Furthest layer, just simple black lettering with no outline */
+.title .word::after {
+  color: black;
+  text-shadow: none;
+  transform: translateZ(calc(var(--layer-depth) * -1));
+}
+
+
+/* Testing Fluid Typography with CSS Variables – Broke on Safari though? */
+.title {
+  --min-font-size: 64;
+  --max-font-size: 128;
+  font-size: calc(var(--min-font-size) * 1px);
+}
+
+
+#scoretete {
+  position: absolute;
+  top: 16%; 
+  right: 50%;
+  transform: translate(50%,-50%);
+  text-transform: uppercase;
+  font-family: verdana;
+  font-size: 3em;
+  font-weight: 700;
+  color: #f5f5f5;
+  text-shadow: 1px 1px 1px #919191,
+      1px 2px 1px #919191,
+      1px 3px 1px #919191,
+      1px 4px 1px #919191,
+      1px 5px 1px #919191,
+      1px 6px 1px #919191,
+      1px 7px 1px #919191,
+      1px 8px 1px #919191,
+      1px 9px 1px #919191,
+      1px 10px 1px #919191,
+  1px 18px 6px rgba(16,16,16,0.4),
+  1px 22px 10px rgba(16,16,16,0.2),
+  1px 25px 35px rgba(16,16,16,0.2),
+  1px 30px 60px rgba(16,16,16,0.4);
+}
