@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Javascript Quiz</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+        }
+
+        #quiz-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #start-button, #restart-button {
+            background-color: #8e44ad;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        #question-container {
+            margin-bottom: 20px;
+        }
+
+        #options-container button {
+            background-color: #fff;
+            color: #000;
+            border: 1px solid #8e44ad;
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+
+        #result-container {
+            margin-top: 20px;
+        }
+
+        #high-score-container {
+            margin-top: 20px;
+        }
+
+        #high-score-container h2 {
+            color: #8e44ad;
+        }
+
+        #high-score-container p {
+            margin-bottom: 10px;
+        }
+
+        #main-image {
+            display: block;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="quiz-container">
+        <h1>Javascript Quiz</h1>
+        <img src="Javascript-5.jpg" id="main-image" alt=""> <br>
+        <button id="start-button">Començar</button>
+        <div id="question-container" style="display: none;">
+            <h2 id="question"></h2>
+            <img id="question-image">
+            <div id="options-container"></div>
+        </div>
+        <div id="result-container" style="display: none;">
+            <h2>Resultat</h2>
+            <p>Preguntes respostes: <span id="answered"></span></p>
+            <p>Respostes correctes: <span id="correct"></span></p>
+            <p>Puntuació total: <span id="score"></span></p>
+        </div>
+        <button id="restart-button" style="display: none;">Tornar a començar</button>
+        <div id="high-score-container" style="display: none;">
+            <h2>Puntuació més alta:</h2>
+            <p id="high-score"></p>
+        </div>
+    </div>
+
+    <script>
+ 
+        const quizData = [
+            {
+                question: "Què mostrarà?",
+                image: "1ç.png",
+                options: ["NaN", "15", "105", "Next"],
+                correctAnswer: 2
+            },
+            {
+                question: "Aquest codi funciona?",
+                image: "2.png",
+                options: ["Sí i mostra 10", "Sí i mostra 25", "No", "Next"],
+                correctAnswer: 0
+            },
+            {
+                question: "Aquest codi funciona?",
+                image: "3.png",
+                options: ["No", " sí i mostra: 7", " sí i mostra  57", "Next"],
+                correctAnswer: 1
+            },
+            {
+                question: "Quin valor mostrarà alert?",
+                image: "4.png",
+                options: ["1", "5", "0", "Next"],
+                correctAnswer: 2
+            },
+            {
+                question: "Aquest codi funciona?",
+                image: "5.png",
+                options: ["No", "sí i mostra  0", "sí i mostra 12", "Next"],
+                correctAnswer: 2
+            },
+            {
+                question: "Quin valor mostra?",
+                image: "6.png",
+                options: ["true", "2 €", "10 €", "Next"],
+                correctAnswer: 1
+            },
+            {
+                question: "Quin valor mostra alert?",
+                image: "7.png",
+                options: ["8", "6", "5", "Next"],
+                correctAnswer: 0
+            },
+            {
+                question: "Què mostrarà per pantalla?",
+                image: "8.png",
+                options: ["Volvo Saab Ford", "Saab Ford", "Ford", "Next"],
+                correctAnswer: 1
+            },
+            {
+                question: "Què mostrarà a la pantalla?",
+                image: "9.png",
+                options: ["Juanito", "Maria", "Juanito Maria", "Next"],
+                correctAnswer: 1
+            },
+            {
+                question: "Què mostrarà l'alert?",
+                image: "10.png",
+                options: ["L1", "L2", "demo2", "Next"],
+                correctAnswer: 2
+            }
+            
+        ];
+
+        const highScoreKey = "quizHighScore";
+        let currentQuestion = 0;
+        let answeredQuestions = 0;
+        let correctAnswers = 0;
+        let score = 0;
+        let timer;
+
+        // Obtiene los elementos HTML necesarios
+        const startButton = document.getElementById("start-button");
+        const questionContainer = document.getElementById("question-container");
+        const questionElement = document.getElementById("question");
+        const questionImageElement = document.getElementById("question-image");
+        const optionsContainer = document.getElementById("options-container");
+        const resultContainer = document.getElementById("result-container");
+        const answeredElement = document.getElementById("answered");
+        const correctElement = document.getElementById("correct");
+        const scoreElement = document.getElementById("score");
+        const restartButton = document.getElementById("restart-button");
+        const timerElement = document.getElementById("timer");
+        const highScoreContainer = document.getElementById("high-score-container");
+        const highScoreElement = document.getElementById("high-score");
+
+        startButton.addEventListener("click", startQuiz);
+        restartButton.addEventListener("click", restartQuiz);
+        const mainImage = document.getElementById("main-image");
+
+        startButton.addEventListener("click", function() {
+            mainImage.style.display = "none";
+            startQuiz();
+        });
+        
+
+        function startQuiz() {
+            startButton.style.display = "none";
+            questionContainer.style.display = "block";
+            const highScore = localStorage.getItem(highScoreKey);
+
+            if (highScore !== null) {
+                highScoreElement.innerText = highScore;
+                highScoreContainer.style.display = "block";
+            }
+
+            showQuestion();
+            startTimer();
+        }
+
+        function restartQuiz() {
+            questionContainer.style.display = "block";
+            resultContainer.style.display = "none";
+            restartButton.style.display = "none";
+            currentQuestion = 0;
+            answeredQuestions = 0;
+            correctAnswers = 0;
+            score = 0;
+            showQuestion();
+            startTimer();
+        }
+
+        function showQuestion() {
+            const questionData = quizData[currentQuestion];
+            questionElement.innerText = questionData.question;
+            questionImageElement.src = "images/" + questionData.image;
+            optionsContainer.innerHTML = "";
+
+            for (let i = 0; i < questionData.options.length; i++) {
+                const option = document.createElement("button");
+                option.innerText = questionData.options[i];
+                option.addEventListener("click", checkAnswer);
+                optionsContainer.appendChild(option);
+            }
+        }
+
+        let timerExpired = false;
+
+        function checkAnswer(event) {
+            const selectedOption = event ? event.target : null;
+            const questionData = quizData[currentQuestion];
+
+            if (selectedOption && selectedOption.innerText === questionData.options[questionData.correctAnswer]) {
+                correctAnswers++;
+                score++;
+                updateHighScore();
+            }
+
+            answeredQuestions++;
+            currentQuestion++;
+
+            if (currentQuestion < quizData.length) {
+                showQuestion();
+            } else {
+                clearInterval(timer);
+                updateHighScore();
+                showResult();
+            }
+
+            if (!selectedOption || timerExpired) {
+                updateHighScore();
+                showResult();
+            }
+        }
+
+        function updateHighScore() {
+            const currentHighScore = localStorage.getItem(highScoreKey);
+
+            if (currentHighScore === null || score > parseInt(currentHighScore)) {
+                localStorage.setItem(highScoreKey, score);
+                highScoreElement.innerText = score;
+            }
+        }
+
+        function showResult() {
+            questionContainer.style.display = "none";
+            resultContainer.style.display = "block";
+            answeredElement.innerText = answeredQuestions;
+            correctElement.innerText = correctAnswers;
+            scoreElement.innerText = score;
+            
+            restartButton.style.display = "block";
+        }
+
+        function startTimer() {
+            let timeLeft = 60; 
+            timerElement.innerText = timeLeft;
+            timer = setInterval(() => {
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    timerExpired = true;
+                    checkAnswer(null);
+                } else {
+                    timeLeft--;
+                    timerElement.innerText = timeLeft;
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+
+</html>
